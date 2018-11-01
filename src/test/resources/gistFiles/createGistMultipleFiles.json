@@ -1,6 +1,6 @@
 {
   "description":"Created multiple gist files via API",
-  "public":"true",
+  "public":"false",
   "files":{
     "README.txt":{
       "content":"Having a POJO would have been way much easier"

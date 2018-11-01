@@ -13,7 +13,7 @@ public class CreateGistTest extends TestBase {
     @Test
     public void createPublicGistWithOneFileIsOk(){
         auth()
-            .body(getFileFromResources("createGistOne.json"))
+            .body(getFileFromResources("gistFiles/createGistOne.json"))
             .post(GISTS).then().statusCode(HttpStatus.SC_CREATED)
             .body("owner.login",is(OWNER),
                     "description",is("Created gistOne via API"),
@@ -25,7 +25,7 @@ public class CreateGistTest extends TestBase {
     @Test
     public void createSecretGistWithOneFileIsOk(){
         auth()
-                .body(getFileFromResources("createGistTwo.json"))
+                .body(getFileFromResources("gistFiles/createGistTwo.json"))
                 .post(GISTS).then().statusCode(HttpStatus.SC_CREATED)
                 .body("owner.login",is(OWNER),
                         "description",is("Created gistTwo via API"),
@@ -37,11 +37,11 @@ public class CreateGistTest extends TestBase {
     @Test
     public void createGistWithMultipleFilesIsOk(){
         auth()
-                .body(getFileFromResources("createGistMultipleFiles.json"))
+                .body(getFileFromResources("gistFiles/createGistMultipleFiles.json"))
                 .post(GISTS).then().statusCode(HttpStatus.SC_CREATED)
                 .body("owner.login",is(OWNER),
                         "description",is("Created multiple gist files via API"),
-                        "public",is(true),
+                        "public",is(false),
                         "files.size()",both(greaterThanOrEqualTo(0)).and(lessThan(Integer.MAX_VALUE)),
                         "files['README.md'].content",is(GIST_CONTENT),
                         "files['README.md'].language",is("Markdown"),
@@ -61,7 +61,7 @@ public class CreateGistTest extends TestBase {
     @Test
     public void createGistWithIncorrectUriIsNotOk(){
         auth()
-                .body(getFileFromResources("createGistOne.json"))
+                .body(getFileFromResources("gistFiles/createGistOne.json"))
                 .post("/gsts").then().statusCode(HttpStatus.SC_NOT_FOUND)
                 .body("message",is("Not Found"),
                         "documentation_url",containsString("developer.github.com"));
@@ -70,7 +70,7 @@ public class CreateGistTest extends TestBase {
     @Test
     public void createGistNoAuthIsNotOk(){
         given()
-                .body(getFileFromResources("createGistOne.json"))
+                .body(getFileFromResources("gistFiles/createGistOne.json"))
                 .post(GISTS).then().statusCode(HttpStatus.SC_UNAUTHORIZED)
                 .body("message",is("Requires authentication"),
                         "documentation_url",containsString(DOC_CREATE_GIST));

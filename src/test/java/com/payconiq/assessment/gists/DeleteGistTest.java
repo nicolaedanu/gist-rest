@@ -15,7 +15,7 @@ public class DeleteGistTest extends TestBase {
     @Test
     public void deleteSecretGistIsOk(){
         // gist is created
-        String gistId = restCreateGistWithBody("createGistOne.json").path("id");
+        String gistId = restCreateGistWithBody("gistFiles/createGistTwo.json").path("id");
         restGetGistWithId(gistId).then().statusCode(HttpStatus.SC_OK);
         // gist is deleted
         auth()
@@ -28,7 +28,7 @@ public class DeleteGistTest extends TestBase {
     @Test
     public void deletePublicGistMultipleFilesIsOk(){
         // gist is created
-        String gistId = restCreateGistWithBody("createGistMultipleFiles.json").path("id");
+        String gistId = restCreateGistWithBody("gistFiles/createGistMultipleFiles.json").path("id");
         restGetGistWithId(gistId).then().statusCode(HttpStatus.SC_OK);
         // gist is deleted
         auth()
@@ -51,7 +51,7 @@ public class DeleteGistTest extends TestBase {
     @Test
     public void deleteGistWithoutAuthIsNotOk(){
         // gist is created
-        String gistId = restCreateGistWithBody("createGistMultipleFiles.json").path("id");
+        String gistId = restCreateGistWithBody("gistFiles/createGistMultipleFiles.json").path("id");
         restGetGistWithId(gistId).then().statusCode(HttpStatus.SC_OK);
         // gist is not deleted
         given()
@@ -77,7 +77,7 @@ public class DeleteGistTest extends TestBase {
     @Test
     public void deleteGistWithIncorectUriIsNotOk(){
         // gist is created
-        String gistId = restCreateGistWithBody("createGistOne.json").path("id");
+        String gistId = restCreateGistWithBody("gistFiles/createGistTwo.json").path("id");
         restGetGistWithId(gistId).then().statusCode(HttpStatus.SC_OK);
         // gist deletion fails
         auth()
