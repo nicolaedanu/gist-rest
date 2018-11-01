@@ -27,7 +27,7 @@ public class GetGistTests extends TestBase {
     @Test
     public void getGistByIdIsOk() {
         // gist is created
-        String gistId = restCreateGistWithBody("gistFiles/createGistTwo.json").path("id");
+        String gistId = restCreateGistWithBody(FILE_GIST_TWO).path("id");
         // get gist and validate response against schema
         auth()
                 .when().pathParam("gistId", gistId).get(GISTS_ID)
@@ -42,7 +42,7 @@ public class GetGistTests extends TestBase {
     @Test
     public void getGistMultipleFileByIdIsOk() {
         // gist is created
-        String gistId = restCreateGistWithBody("gistFiles/createGistMultipleFiles.json").path("id");
+        String gistId = restCreateGistWithBody(FILE_GIST_MULTIPLE).path("id");
         // get gist and validate response against schema
         auth()
                 .when().pathParam("gistId", gistId).get(GISTS_ID)
@@ -70,8 +70,8 @@ public class GetGistTests extends TestBase {
         auth()
                 .when().pathParam("gistId", gistId).get(GISTS_ID)
                 .then().statusCode(HttpStatus.SC_NOT_FOUND)
-                .body("message", CoreMatchers.is("Not Found"),
-                        "documentation_url", containsString(DOC_GET_SINGLE_GIST));
+                .body(PATH_MESSAGE, CoreMatchers.is(ERROR_NOT_FOUND),
+                        PATH_DOC_URL, containsString(DOC_GET_SINGLE_GIST));
 
     }
 
@@ -89,13 +89,13 @@ public class GetGistTests extends TestBase {
     @Test
     public void getGistWithIncorrectUriIsNotOk() {
         // gist is created
-        String gistId = restCreateGistWithBody("gistFiles/createGistTwo.json").path("id");
+        String gistId = restCreateGistWithBody(FILE_GIST_TWO).path("id");
         // get gist and validate response against schema
         auth()
                 .when().pathParam("gistId", gistId).get("/gst/{gistId}")
                 .then().statusCode(HttpStatus.SC_NOT_FOUND)
-                .body("message", CoreMatchers.is("Not Found"),
-                        "documentation_url", containsString("developer.github.com"));
+                .body(PATH_MESSAGE, CoreMatchers.is(ERROR_NOT_FOUND),
+                        PATH_DOC_URL, containsString("developer.github.com"));
     }
 
 }

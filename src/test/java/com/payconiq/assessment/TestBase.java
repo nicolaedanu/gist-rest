@@ -6,12 +6,14 @@ import io.restassured.specification.RequestSpecification;
 import org.apache.http.HttpStatus;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 
 import java.io.File;
 import java.lang.reflect.Method;
 
 import static io.restassured.RestAssured.given;
 
+@Listeners({com.payconiq.assessment.reports.CustomisedReports.class})
 public class TestBase {
     private static final String TOKEN = "{useYourGithubAccessToken}";
     private static final String VND_GITHUB_V3 = "application/vnd.github.v3+json";
@@ -19,6 +21,15 @@ public class TestBase {
 
     public static final String OWNER = "payconiqQA";
     public static final String GIST_CONTENT = "Having a POJO would have been way much easier";
+    public static final String PATH_MESSAGE = "message";
+    public static final String PATH_DOC_URL = "documentation_url";
+    public static final String ERROR_NOT_FOUND = "Not Found";
+
+    public static final String FILE_GIST_ONE = "gistFiles/createGistOne.json";
+    public static final String FILE_GIST_ONE_UPDATE = "gistFiles/updateGistOne.json";
+    public static final String FILE_GIST_TWO = "gistFiles/createGistTwo.json";
+    public static final String FILE_GIST_TWO_UPDATE = "gistFiles/updateGistTwo.json";
+    public static final String FILE_GIST_MULTIPLE = "gistFiles/createGistMultipleFiles.json";
 
 
     public static final String GISTS = "/gists";
@@ -41,18 +52,18 @@ public class TestBase {
         return given().auth().preemptive().oauth2(TOKEN).accept(VND_GITHUB_V3);
     }
 
-    public File getFileFromResources(String fileName){
+    public File getFileFromResources(String fileName) {
         return new File(getClass().getClassLoader().getResource(fileName).getFile());
     }
 
     public Response restCreateGistWithBody(String fileName) {
-        return  auth().body(getFileFromResources(fileName))
+        return auth().body(getFileFromResources(fileName))
                 .post(GISTS).then().statusCode(HttpStatus.SC_CREATED)
                 .extract().response();
     }
 
-    public Response restGetGistWithId(String gistId){
-        return  auth().pathParam("gistId",gistId)
+    public Response restGetGistWithId(String gistId) {
+        return auth().pathParam("gistId", gistId)
                 .get(GISTS_ID).then().extract().response();
     }
 }

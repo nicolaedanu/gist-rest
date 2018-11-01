@@ -13,7 +13,7 @@ public class CreateGistTest extends TestBase {
     @Test
     public void createPublicGistWithOneFileIsOk(){
         auth()
-            .body(getFileFromResources("gistFiles/createGistOne.json"))
+            .body(getFileFromResources(FILE_GIST_ONE))
             .post(GISTS).then().statusCode(HttpStatus.SC_CREATED)
             .body("owner.login",is(OWNER),
                     "description",is("Created gistOne via API"),
@@ -25,7 +25,7 @@ public class CreateGistTest extends TestBase {
     @Test
     public void createSecretGistWithOneFileIsOk(){
         auth()
-                .body(getFileFromResources("gistFiles/createGistTwo.json"))
+                .body(getFileFromResources(FILE_GIST_TWO))
                 .post(GISTS).then().statusCode(HttpStatus.SC_CREATED)
                 .body("owner.login",is(OWNER),
                         "description",is("Created gistTwo via API"),
@@ -37,7 +37,7 @@ public class CreateGistTest extends TestBase {
     @Test
     public void createGistWithMultipleFilesIsOk(){
         auth()
-                .body(getFileFromResources("gistFiles/createGistMultipleFiles.json"))
+                .body(getFileFromResources(FILE_GIST_MULTIPLE))
                 .post(GISTS).then().statusCode(HttpStatus.SC_CREATED)
                 .body("owner.login",is(OWNER),
                         "description",is("Created multiple gist files via API"),
@@ -55,24 +55,24 @@ public class CreateGistTest extends TestBase {
                 .body("invalidPayload")
                 .post(GISTS).then().statusCode(HttpStatus.SC_BAD_REQUEST)
                 .header("X-GitHub-Media-Type",containsString("github.v3"))
-                .body("message",is("Problems parsing JSON"),
-                        "documentation_url",containsString(DOC_CREATE_GIST));
+                .body(PATH_MESSAGE,is("Problems parsing JSON"),
+                        PATH_DOC_URL,containsString(DOC_CREATE_GIST));
     }
     @Test
     public void createGistWithIncorrectUriIsNotOk(){
         auth()
-                .body(getFileFromResources("gistFiles/createGistOne.json"))
+                .body(getFileFromResources(FILE_GIST_ONE))
                 .post("/gsts").then().statusCode(HttpStatus.SC_NOT_FOUND)
-                .body("message",is("Not Found"),
-                        "documentation_url",containsString("developer.github.com"));
+                .body(PATH_MESSAGE,is(ERROR_NOT_FOUND),
+                        PATH_DOC_URL,containsString("developer.github.com"));
     }
 
     @Test
     public void createGistNoAuthIsNotOk(){
         given()
-                .body(getFileFromResources("gistFiles/createGistOne.json"))
+                .body(getFileFromResources(FILE_GIST_ONE))
                 .post(GISTS).then().statusCode(HttpStatus.SC_UNAUTHORIZED)
-                .body("message",is("Requires authentication"),
-                        "documentation_url",containsString(DOC_CREATE_GIST));
+                .body(PATH_MESSAGE,is("Requires authentication"),
+                        PATH_DOC_URL,containsString(DOC_CREATE_GIST));
     }
 }
