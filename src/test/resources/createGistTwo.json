@@ -1,0 +1,9 @@
+{
+  "description":"Created gistTwo via API",
+  "public":"false",
+  "files":{
+    "gistTwo.txt":{
+      "content":"Having a POJO would have been way much easier"
+    }
+  }
+}

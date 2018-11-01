@@ -1,0 +1,14 @@
+{
+  "description":"Created multiple gist files using Rest Assured",
+  "public":"false",
+  "files":{
+    "README.txt":{
+      "content":"You need to handle File exceptions when using files.",
+      "filename":"NEWREADME.txt"
+    },
+    "README.md":{
+      "content":"You need to handle File exceptions when using files.",
+      "filename":"IAmBadWithNamings.md"
+    }
+  }
+}

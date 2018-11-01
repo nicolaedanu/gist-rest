@@ -1,0 +1,15 @@
+{
+  "description":"Created multiple gist files via API",
+  "public":"true",
+  "files":{
+    "README.txt":{
+      "content":"Having a POJO would have been way much easier"
+    },
+    "README.md":{
+      "content":"Having a POJO would have been way much easier"
+    },
+    "README.yaml":{
+      "content":"Having a POJO would have been way much easier"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "description":"Created gistOne via Rest Assured",
+  "public":"false",
+  "files":{
+    "gistOne.txt":{
+      "content":"",
+      "filename":"updatedGistOne.txt"
+    }
+  }
+}
