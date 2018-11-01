@@ -8,7 +8,6 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
 public class CreateGistTest extends TestBase {
-    private static final String GIST_CONTENT = "Having a POJO would have been way much easier";
     private static final String DOC_CREATE_GIST = "#create-a-gist";
 
     @Test

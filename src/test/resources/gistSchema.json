@@ -1,0 +1,694 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "url",
+    "forks_url",
+    "commits_url",
+    "id",
+    "node_id",
+    "git_pull_url",
+    "git_push_url",
+    "html_url",
+    "files",
+    "public",
+    "created_at",
+    "updated_at",
+    "description",
+    "comments",
+    "user",
+    "comments_url",
+    "owner",
+    "forks",
+    "history",
+    "truncated"
+  ],
+  "properties": {
+    "url": {
+      "$id": "#/properties/url",
+      "type": "string",
+      "title": "The Url Schema",
+      "default": "",
+      "examples": [
+        "https://api.github.com/gists/efb947e1104c6edd4b529269359702f7"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "forks_url": {
+      "$id": "#/properties/forks_url",
+      "type": "string",
+      "title": "The Forks_url Schema",
+      "default": "",
+      "examples": [
+        "https://api.github.com/gists/efb947e1104c6edd4b529269359702f7/forks"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "commits_url": {
+      "$id": "#/properties/commits_url",
+      "type": "string",
+      "title": "The Commits_url Schema",
+      "default": "",
+      "examples": [
+        "https://api.github.com/gists/efb947e1104c6edd4b529269359702f7/commits"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "id": {
+      "$id": "#/properties/id",
+      "type": "string",
+      "title": "The Id Schema",
+      "default": "",
+      "examples": [
+        "efb947e1104c6edd4b529269359702f7"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "node_id": {
+      "$id": "#/properties/node_id",
+      "type": "string",
+      "title": "The Node_id Schema",
+      "default": "",
+      "examples": [
+        "MDQ6R2lzdGVmYjk0N2UxMTA0YzZlZGQ0YjUyOTI2OTM1OTcwMmY3"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "git_pull_url": {
+      "$id": "#/properties/git_pull_url",
+      "type": "string",
+      "title": "The Git_pull_url Schema",
+      "default": "",
+      "examples": [
+        "https://gist.github.com/efb947e1104c6edd4b529269359702f7.git"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "git_push_url": {
+      "$id": "#/properties/git_push_url",
+      "type": "string",
+      "title": "The Git_push_url Schema",
+      "default": "",
+      "examples": [
+        "https://gist.github.com/efb947e1104c6edd4b529269359702f7.git"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "html_url": {
+      "$id": "#/properties/html_url",
+      "type": "string",
+      "title": "The Html_url Schema",
+      "default": "",
+      "examples": [
+        "https://gist.github.com/efb947e1104c6edd4b529269359702f7"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "files": {
+      "$id": "#/properties/files",
+      "type": "object",
+      "title": "The Files Schema"
+    },
+    "public": {
+      "$id": "#/properties/public",
+      "type": "boolean",
+      "title": "The Public Schema",
+      "default": false,
+      "examples": [
+        true
+      ]
+    },
+    "created_at": {
+      "$id": "#/properties/created_at",
+      "type": "string",
+      "title": "The Created_at Schema",
+      "default": "",
+      "examples": [
+        "2018-11-01T12:53:38Z"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "updated_at": {
+      "$id": "#/properties/updated_at",
+      "type": "string",
+      "title": "The Updated_at Schema",
+      "default": "",
+      "examples": [
+        "2018-11-01T12:53:39Z"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "description": {
+      "$id": "#/properties/description",
+      "type": "string",
+      "title": "The Description Schema",
+      "default": "",
+      "examples": [
+        "Created multiple gist files via API"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "comments": {
+      "$id": "#/properties/comments",
+      "type": "integer",
+      "title": "The Comments Schema",
+      "default": 0,
+      "examples": [
+        0
+      ]
+    },
+    "user": {
+      "$id": "#/properties/user",
+      "type": "null",
+      "title": "The User Schema",
+      "default": null,
+      "examples": [
+        null
+      ]
+    },
+    "comments_url": {
+      "$id": "#/properties/comments_url",
+      "type": "string",
+      "title": "The Comments_url Schema",
+      "default": "",
+      "examples": [
+        "https://api.github.com/gists/efb947e1104c6edd4b529269359702f7/comments"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "owner": {
+      "$id": "#/properties/owner",
+      "type": "object",
+      "title": "The Owner Schema",
+      "required": [
+        "login",
+        "id",
+        "node_id",
+        "avatar_url",
+        "gravatar_id",
+        "url",
+        "html_url",
+        "followers_url",
+        "following_url",
+        "gists_url",
+        "starred_url",
+        "subscriptions_url",
+        "organizations_url",
+        "repos_url",
+        "events_url",
+        "received_events_url",
+        "type",
+        "site_admin"
+      ],
+      "properties": {
+        "login": {
+          "$id": "#/properties/owner/properties/login",
+          "type": "string",
+          "title": "The Login Schema",
+          "default": "",
+          "examples": [
+            "payconiqQA"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "id": {
+          "$id": "#/properties/owner/properties/id",
+          "type": "integer",
+          "title": "The Id Schema",
+          "default": 0,
+          "examples": [
+            39983623
+          ]
+        },
+        "node_id": {
+          "$id": "#/properties/owner/properties/node_id",
+          "type": "string",
+          "title": "The Node_id Schema",
+          "default": "",
+          "examples": [
+            "MDQ6VXNlcjM5OTgzNjIz"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "avatar_url": {
+          "$id": "#/properties/owner/properties/avatar_url",
+          "type": "string",
+          "title": "The Avatar_url Schema",
+          "default": "",
+          "examples": [
+            "https://avatars1.githubusercontent.com/u/39983623?v=4"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "gravatar_id": {
+          "$id": "#/properties/owner/properties/gravatar_id",
+          "type": "string",
+          "title": "The Gravatar_id Schema",
+          "default": "",
+          "examples": [
+            ""
+          ],
+          "pattern": "^(.*)$"
+        },
+        "url": {
+          "$id": "#/properties/owner/properties/url",
+          "type": "string",
+          "title": "The Url Schema",
+          "default": "",
+          "examples": [
+            "https://api.github.com/users/payconiqQA"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "html_url": {
+          "$id": "#/properties/owner/properties/html_url",
+          "type": "string",
+          "title": "The Html_url Schema",
+          "default": "",
+          "examples": [
+            "https://github.com/payconiqQA"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "followers_url": {
+          "$id": "#/properties/owner/properties/followers_url",
+          "type": "string",
+          "title": "The Followers_url Schema",
+          "default": "",
+          "examples": [
+            "https://api.github.com/users/payconiqQA/followers"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "following_url": {
+          "$id": "#/properties/owner/properties/following_url",
+          "type": "string",
+          "title": "The Following_url Schema",
+          "default": "",
+          "examples": [
+            "https://api.github.com/users/payconiqQA/following{/other_user}"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "gists_url": {
+          "$id": "#/properties/owner/properties/gists_url",
+          "type": "string",
+          "title": "The Gists_url Schema",
+          "default": "",
+          "examples": [
+            "https://api.github.com/users/payconiqQA/gists{/gist_id}"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "starred_url": {
+          "$id": "#/properties/owner/properties/starred_url",
+          "type": "string",
+          "title": "The Starred_url Schema",
+          "default": "",
+          "examples": [
+            "https://api.github.com/users/payconiqQA/starred{/owner}{/repo}"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "subscriptions_url": {
+          "$id": "#/properties/owner/properties/subscriptions_url",
+          "type": "string",
+          "title": "The Subscriptions_url Schema",
+          "default": "",
+          "examples": [
+            "https://api.github.com/users/payconiqQA/subscriptions"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "organizations_url": {
+          "$id": "#/properties/owner/properties/organizations_url",
+          "type": "string",
+          "title": "The Organizations_url Schema",
+          "default": "",
+          "examples": [
+            "https://api.github.com/users/payconiqQA/orgs"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "repos_url": {
+          "$id": "#/properties/owner/properties/repos_url",
+          "type": "string",
+          "title": "The Repos_url Schema",
+          "default": "",
+          "examples": [
+            "https://api.github.com/users/payconiqQA/repos"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "events_url": {
+          "$id": "#/properties/owner/properties/events_url",
+          "type": "string",
+          "title": "The Events_url Schema",
+          "default": "",
+          "examples": [
+            "https://api.github.com/users/payconiqQA/events{/privacy}"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "received_events_url": {
+          "$id": "#/properties/owner/properties/received_events_url",
+          "type": "string",
+          "title": "The Received_events_url Schema",
+          "default": "",
+          "examples": [
+            "https://api.github.com/users/payconiqQA/received_events"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "type": {
+          "$id": "#/properties/owner/properties/type",
+          "type": "string",
+          "title": "The Type Schema",
+          "default": "",
+          "examples": [
+            "User"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "site_admin": {
+          "$id": "#/properties/owner/properties/site_admin",
+          "type": "boolean",
+          "title": "The Site_admin Schema",
+          "default": false,
+          "examples": [
+            false
+          ]
+        }
+      }
+    },
+    "forks": {
+      "$id": "#/properties/forks",
+      "type": "array",
+      "title": "The Forks Schema"
+    },
+    "history": {
+      "$id": "#/properties/history",
+      "type": "array",
+      "title": "The History Schema",
+      "items": {
+        "$id": "#/properties/history/items",
+        "type": "object",
+        "title": "The Items Schema",
+        "required": [
+          "user",
+          "version",
+          "committed_at",
+          "change_status",
+          "url"
+        ],
+        "properties": {
+          "user": {
+            "$id": "#/properties/history/items/properties/user",
+            "type": "object",
+            "title": "The User Schema",
+            "required": [
+              "login",
+              "id",
+              "node_id",
+              "avatar_url",
+              "gravatar_id",
+              "url",
+              "html_url",
+              "followers_url",
+              "following_url",
+              "gists_url",
+              "starred_url",
+              "subscriptions_url",
+              "organizations_url",
+              "repos_url",
+              "events_url",
+              "received_events_url",
+              "type",
+              "site_admin"
+            ],
+            "properties": {
+              "login": {
+                "$id": "#/properties/history/items/properties/user/properties/login",
+                "type": "string",
+                "title": "The Login Schema",
+                "default": "",
+                "examples": [
+                  "payconiqQA"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "id": {
+                "$id": "#/properties/history/items/properties/user/properties/id",
+                "type": "integer",
+                "title": "The Id Schema",
+                "default": 0,
+                "examples": [
+                  39983623
+                ]
+              },
+              "node_id": {
+                "$id": "#/properties/history/items/properties/user/properties/node_id",
+                "type": "string",
+                "title": "The Node_id Schema",
+                "default": "",
+                "examples": [
+                  "MDQ6VXNlcjM5OTgzNjIz"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "avatar_url": {
+                "$id": "#/properties/history/items/properties/user/properties/avatar_url",
+                "type": "string",
+                "title": "The Avatar_url Schema",
+                "default": "",
+                "examples": [
+                  "https://avatars1.githubusercontent.com/u/39983623?v=4"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "gravatar_id": {
+                "$id": "#/properties/history/items/properties/user/properties/gravatar_id",
+                "type": "string",
+                "title": "The Gravatar_id Schema",
+                "default": "",
+                "examples": [
+                  ""
+                ],
+                "pattern": "^(.*)$"
+              },
+              "url": {
+                "$id": "#/properties/history/items/properties/user/properties/url",
+                "type": "string",
+                "title": "The Url Schema",
+                "default": "",
+                "examples": [
+                  "https://api.github.com/users/payconiqQA"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "html_url": {
+                "$id": "#/properties/history/items/properties/user/properties/html_url",
+                "type": "string",
+                "title": "The Html_url Schema",
+                "default": "",
+                "examples": [
+                  "https://github.com/payconiqQA"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "followers_url": {
+                "$id": "#/properties/history/items/properties/user/properties/followers_url",
+                "type": "string",
+                "title": "The Followers_url Schema",
+                "default": "",
+                "examples": [
+                  "https://api.github.com/users/payconiqQA/followers"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "following_url": {
+                "$id": "#/properties/history/items/properties/user/properties/following_url",
+                "type": "string",
+                "title": "The Following_url Schema",
+                "default": "",
+                "examples": [
+                  "https://api.github.com/users/payconiqQA/following{/other_user}"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "gists_url": {
+                "$id": "#/properties/history/items/properties/user/properties/gists_url",
+                "type": "string",
+                "title": "The Gists_url Schema",
+                "default": "",
+                "examples": [
+                  "https://api.github.com/users/payconiqQA/gists{/gist_id}"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "starred_url": {
+                "$id": "#/properties/history/items/properties/user/properties/starred_url",
+                "type": "string",
+                "title": "The Starred_url Schema",
+                "default": "",
+                "examples": [
+                  "https://api.github.com/users/payconiqQA/starred{/owner}{/repo}"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "subscriptions_url": {
+                "$id": "#/properties/history/items/properties/user/properties/subscriptions_url",
+                "type": "string",
+                "title": "The Subscriptions_url Schema",
+                "default": "",
+                "examples": [
+                  "https://api.github.com/users/payconiqQA/subscriptions"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "organizations_url": {
+                "$id": "#/properties/history/items/properties/user/properties/organizations_url",
+                "type": "string",
+                "title": "The Organizations_url Schema",
+                "default": "",
+                "examples": [
+                  "https://api.github.com/users/payconiqQA/orgs"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "repos_url": {
+                "$id": "#/properties/history/items/properties/user/properties/repos_url",
+                "type": "string",
+                "title": "The Repos_url Schema",
+                "default": "",
+                "examples": [
+                  "https://api.github.com/users/payconiqQA/repos"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "events_url": {
+                "$id": "#/properties/history/items/properties/user/properties/events_url",
+                "type": "string",
+                "title": "The Events_url Schema",
+                "default": "",
+                "examples": [
+                  "https://api.github.com/users/payconiqQA/events{/privacy}"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "received_events_url": {
+                "$id": "#/properties/history/items/properties/user/properties/received_events_url",
+                "type": "string",
+                "title": "The Received_events_url Schema",
+                "default": "",
+                "examples": [
+                  "https://api.github.com/users/payconiqQA/received_events"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "type": {
+                "$id": "#/properties/history/items/properties/user/properties/type",
+                "type": "string",
+                "title": "The Type Schema",
+                "default": "",
+                "examples": [
+                  "User"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "site_admin": {
+                "$id": "#/properties/history/items/properties/user/properties/site_admin",
+                "type": "boolean",
+                "title": "The Site_admin Schema",
+                "default": false,
+                "examples": [
+                  false
+                ]
+              }
+            }
+          },
+          "version": {
+            "$id": "#/properties/history/items/properties/version",
+            "type": "string",
+            "title": "The Version Schema",
+            "default": "",
+            "examples": [
+              "273390d1473b025dbac06fda2a47be1655fdf47f"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "committed_at": {
+            "$id": "#/properties/history/items/properties/committed_at",
+            "type": "string",
+            "title": "The Committed_at Schema",
+            "default": "",
+            "examples": [
+              "2018-11-01T12:53:38Z"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "change_status": {
+            "$id": "#/properties/history/items/properties/change_status",
+            "type": "object",
+            "title": "The Change_status Schema",
+            "required": [
+              "total",
+              "additions",
+              "deletions"
+            ],
+            "properties": {
+              "total": {
+                "$id": "#/properties/history/items/properties/change_status/properties/total",
+                "type": "integer",
+                "title": "The Total Schema",
+                "default": 0,
+                "examples": [
+                  3
+                ]
+              },
+              "additions": {
+                "$id": "#/properties/history/items/properties/change_status/properties/additions",
+                "type": "integer",
+                "title": "The Additions Schema",
+                "default": 0,
+                "examples": [
+                  3
+                ]
+              },
+              "deletions": {
+                "$id": "#/properties/history/items/properties/change_status/properties/deletions",
+                "type": "integer",
+                "title": "The Deletions Schema",
+                "default": 0,
+                "examples": [
+                  0
+                ]
+              }
+            }
+          },
+          "url": {
+            "$id": "#/properties/history/items/properties/url",
+            "type": "string",
+            "title": "The Url Schema",
+            "default": "",
+            "examples": [
+              "https://api.github.com/gists/efb947e1104c6edd4b529269359702f7/273390d1473b025dbac06fda2a47be1655fdf47f"
+            ],
+            "pattern": "^(.*)$"
+          }
+        }
+      }
+    },
+    "truncated": {
+      "$id": "#/properties/truncated",
+      "type": "boolean",
+      "title": "The Truncated Schema",
+      "default": false,
+      "examples": [
+        false
+      ]
+    }
+  }
+}
