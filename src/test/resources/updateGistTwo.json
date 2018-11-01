@@ -1,6 +1,5 @@
 {
   "description":"Created gistTwo via Rest Assured",
-  "public":"true",
   "files":{
     "gistTwo.txt":{
       "filename":"updatedgistTwo.txt"
