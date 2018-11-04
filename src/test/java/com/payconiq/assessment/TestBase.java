@@ -11,31 +11,33 @@ import org.testng.annotations.BeforeMethod;
 
 import java.io.File;
 import java.lang.reflect.Method;
+import java.net.URL;
 
 import static io.restassured.RestAssured.given;
 
-public class TestBase {
-    private Logger logger = LoggerFactory.getLogger(TestBase.class);
+public abstract class TestBase {
+    protected Logger logger = LoggerFactory.getLogger(getClass());
+
     private static final String TOKEN = System.getProperty("token");
     private static final String VND_GITHUB_V3 = "application/vnd.github.v3+json";
     private static final String BASE_URI = "https://api.github.com";
 
-    public static final String OWNER = "payconiqQA";
-    public static final String GIST_CONTENT = "Having a POJO would have been way much easier";
-    public static final String PATH_MESSAGE = "message";
-    public static final String PATH_DOC_URL = "documentation_url";
-    public static final String ERROR_NOT_FOUND = "Not Found";
+    protected static final String OWNER = "payconiqQA";
+    protected static final String GIST_CONTENT = "Having a POJO would have been way much easier";
+    protected static final String PATH_MESSAGE = "message";
+    protected static final String PATH_DOC_URL = "documentation_url";
+    protected static final String ERROR_NOT_FOUND = "Not Found";
 
-    public static final String FILE_GIST_ONE = "gistFiles/createGistOne.json";
-    public static final String FILE_GIST_ONE_UPDATE = "gistFiles/updateGistOne.json";
-    public static final String FILE_GIST_TWO = "gistFiles/createGistTwo.json";
-    public static final String FILE_GIST_TWO_UPDATE = "gistFiles/updateGistTwo.json";
-    public static final String FILE_GIST_MULTIPLE = "gistFiles/createGistMultipleFiles.json";
-    public static final String FILE_EMPTY = "gistFiles/emptyFile.json";
+    protected static final String FILE_GIST_ONE = "gistFiles/createGistOne.json";
+    protected static final String FILE_GIST_ONE_UPDATE = "gistFiles/updateGistOne.json";
+    protected static final String FILE_GIST_TWO = "gistFiles/createGistTwo.json";
+    protected static final String FILE_GIST_TWO_UPDATE = "gistFiles/updateGistTwo.json";
+    protected static final String FILE_GIST_MULTIPLE = "gistFiles/createGistMultipleFiles.json";
+    protected static final String FILE_EMPTY = "gistFiles/emptyFile.json";
 
 
-    public static final String GISTS = "/gists";
-    public static final String GISTS_ID = "/gists/{gistId}";
+    protected static final String GISTS = "/gists";
+    protected static final String GISTS_ID = "/gists/{gistId}";
 
     @BeforeClass
     public void setup() {
@@ -45,31 +47,31 @@ public class TestBase {
 
     @BeforeMethod
     public void beforeTestCase(Method m) {
-        System.out.println("Running test: " + m.getName());
+        logger.info("Running test: " + m.getName());
     }
 
-    public RequestSpecification auth() {
+    protected RequestSpecification auth() {
         return given().auth().preemptive().oauth2(TOKEN).accept(VND_GITHUB_V3);
     }
 
-    public File getFileFromResources(String fileName){
-        File file = new File(getClass().getClassLoader().getResource(FILE_EMPTY).getFile());
+    protected File getFileFromResources(String fileName) {
         try {
-            file =  new File(getClass().getClassLoader().getResource(fileName).getFile());
+            ClassLoader classLoader = getClass().getClassLoader();
+            URL url = classLoader.getResource(fileName);
+            return new File(url.getFile());
         } catch (Exception e) {
-            System.out.println("File not found, or incorrect file name");
-            logger.error("File not found, or incorrect file name");
+            logger.error("File not found, or incorrect file name", e);
+            throw e;
         }
-           return file;
     }
 
-    public Response restCreateGistWithBody(String fileName) {
-            return auth().body(getFileFromResources(fileName))
-                    .post(GISTS).then().statusCode(HttpStatus.SC_CREATED)
-                    .extract().response();
+    protected Response restCreateGistWithBody(String fileName) {
+        return auth().body(getFileFromResources(fileName))
+                .post(GISTS).then().statusCode(HttpStatus.SC_CREATED)
+                .extract().response();
     }
 
-    public Response restGetGistWithId(String gistId) {
+    protected Response restGetGistWithId(String gistId) {
         return auth().pathParam("gistId", gistId)
                 .get(GISTS_ID).then().extract().response();
     }
