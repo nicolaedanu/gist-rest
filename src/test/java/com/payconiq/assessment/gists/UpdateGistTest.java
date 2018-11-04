@@ -14,11 +14,11 @@ public class UpdateGistTest extends TestBase {
     private static final String DOC_EDIT_GIST = "#edit-a-gist";
 
     @Test
-    public void updatePublicGistsIsOk(){
+    public void updatePublicGistsIsOk() {
         // gist is created
         Response gist = restCreateGistWithBody(FILE_GIST_ONE)
-                .then().body("description",is("Created gistOne via API"),
-                        "files['gistOne.txt'].content",is(GIST_CONTENT))
+                .then().body("description", is("Created gistOne via API"),
+                        "files['gistOne.txt'].content", is(GIST_CONTENT))
                 .extract().response();
         String gistId = gist.path("id");
         // update gist - different file name and no content
@@ -31,11 +31,11 @@ public class UpdateGistTest extends TestBase {
     }
 
     @Test
-    public void updateSecretGistsIsOk(){
+    public void updateSecretGistsIsOk() {
         // gist is created
         Response gist = restCreateGistWithBody(FILE_GIST_TWO)
-                .then().body("description",is("Created gistTwo via API"),
-                        "files['gistTwo.txt'].content",is(GIST_CONTENT))
+                .then().body("description", is("Created gistTwo via API"),
+                        "files['gistTwo.txt'].content", is(GIST_CONTENT))
                 .extract().response();
         String gistId = gist.path("id");
 
@@ -48,7 +48,7 @@ public class UpdateGistTest extends TestBase {
     }
 
     @Test
-    public void updateOtherPublicAccountGistsIsNotOk(){
+    public void updateOtherPublicAccountGistsIsNotOk() {
         // get first Public Gist
         String firstPublicId = given().get(GISTS).then().body("[0].owner.login", not(OWNER))
                 .extract().response().path("[0].id");
@@ -61,7 +61,7 @@ public class UpdateGistTest extends TestBase {
     }
 
     @Test
-    public void updateGistWithoutAuthIsNotOk(){
+    public void updateGistWithoutAuthIsNotOk() {
         // gist is created
         String gistId = restCreateGistWithBody(FILE_GIST_TWO).path("id");
         // remove gist without auth
@@ -71,8 +71,9 @@ public class UpdateGistTest extends TestBase {
                 .body(PATH_MESSAGE, CoreMatchers.is(ERROR_NOT_FOUND),
                         PATH_DOC_URL, containsString(DOC_EDIT_GIST));
     }
+
     @Test
-    public void updateGistInvalidPayloadIsNotOk2(){
+    public void updateGistInvalidPayloadIsNotOk2() {
         // gist is created
         String gistId = restCreateGistWithBody(FILE_GIST_TWO).path("id");
         // update gist using invalid payload
@@ -84,7 +85,7 @@ public class UpdateGistTest extends TestBase {
     }
 
     @Test
-    public void updateGistWithIncorrectUriIsNotOk(){
+    public void updateGistWithIncorrectUriIsNotOk() {
         // gist is created
         String gistId = restCreateGistWithBody(FILE_GIST_TWO).path("id");
         // remove gist without auth

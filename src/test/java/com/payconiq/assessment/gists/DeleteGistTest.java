@@ -13,78 +13,78 @@ public class DeleteGistTest extends TestBase {
     private static final String DOC_DELETE_GIST = "#delete-a-gist";
 
     @Test
-    public void deleteSecretGistIsOk(){
+    public void deleteSecretGistIsOk() {
         // gist is created
         String gistId = restCreateGistWithBody(FILE_GIST_TWO).path("id");
         restGetGistWithId(gistId).then().statusCode(HttpStatus.SC_OK);
         // gist is deleted
         auth()
-                .when().pathParam("gistId",gistId).delete(GISTS_ID)
+                .when().pathParam("gistId", gistId).delete(GISTS_ID)
                 .then().statusCode(HttpStatus.SC_NO_CONTENT);
         // gist is not found
         restGetGistWithId(gistId).then().statusCode(HttpStatus.SC_NOT_FOUND);
     }
 
     @Test
-    public void deletePublicGistMultipleFilesIsOk(){
+    public void deletePublicGistMultipleFilesIsOk() {
         // gist is created
         String gistId = restCreateGistWithBody(FILE_GIST_MULTIPLE).path("id");
         restGetGistWithId(gistId).then().statusCode(HttpStatus.SC_OK);
         // gist is deleted
         auth()
-                .when().pathParam("gistId",gistId).delete(GISTS_ID)
+                .when().pathParam("gistId", gistId).delete(GISTS_ID)
                 .then().statusCode(HttpStatus.SC_NO_CONTENT);
         // gist is not found
         restGetGistWithId(gistId).then().statusCode(HttpStatus.SC_NOT_FOUND);
     }
 
     @Test
-    public void deleteInvalidGistIsNotOk(){
+    public void deleteInvalidGistIsNotOk() {
         String gistId = "invalidId";
         auth()
-                .when().pathParam("gistId",gistId).delete(GISTS_ID)
+                .when().pathParam("gistId", gistId).delete(GISTS_ID)
                 .then().statusCode(HttpStatus.SC_NOT_FOUND)
-                .body(PATH_MESSAGE,is(ERROR_NOT_FOUND),
-                        PATH_DOC_URL,containsString(DOC_DELETE_GIST));
+                .body(PATH_MESSAGE, is(ERROR_NOT_FOUND),
+                        PATH_DOC_URL, containsString(DOC_DELETE_GIST));
     }
 
     @Test
-    public void deleteGistWithoutAuthIsNotOk(){
+    public void deleteGistWithoutAuthIsNotOk() {
         // gist is created
         String gistId = restCreateGistWithBody(FILE_GIST_MULTIPLE).path("id");
         restGetGistWithId(gistId).then().statusCode(HttpStatus.SC_OK);
         // gist is not deleted
         given()
-                .when().pathParam("gistId",gistId).delete(GISTS_ID)
+                .when().pathParam("gistId", gistId).delete(GISTS_ID)
                 .then().statusCode(HttpStatus.SC_NOT_FOUND)
-                .body(PATH_MESSAGE,is(ERROR_NOT_FOUND),
-                        PATH_DOC_URL,containsString(DOC_DELETE_GIST));
+                .body(PATH_MESSAGE, is(ERROR_NOT_FOUND),
+                        PATH_DOC_URL, containsString(DOC_DELETE_GIST));
     }
 
     @Test
-    public void deleteOtherPublicAccountGistIsNotOk(){
+    public void deleteOtherPublicAccountGistIsNotOk() {
         // get first Public Gist
         String firstPublicId = given().get(GISTS).then().body("[0].owner.login", not(OWNER))
                 .extract().response().path("[0].id");
         // try to delete Public Gist
         auth()
-                .when().pathParam("gistId",firstPublicId).delete(GISTS_ID)
+                .when().pathParam("gistId", firstPublicId).delete(GISTS_ID)
                 .then().statusCode(HttpStatus.SC_NOT_FOUND)
-                .body(PATH_MESSAGE,is(ERROR_NOT_FOUND),
-                        PATH_DOC_URL,containsString(DOC_DELETE_GIST));
+                .body(PATH_MESSAGE, is(ERROR_NOT_FOUND),
+                        PATH_DOC_URL, containsString(DOC_DELETE_GIST));
     }
 
     @Test
-    public void deleteGistWithIncorectUriIsNotOk(){
+    public void deleteGistWithIncorectUriIsNotOk() {
         // gist is created
         String gistId = restCreateGistWithBody(FILE_GIST_TWO).path("id");
         restGetGistWithId(gistId).then().statusCode(HttpStatus.SC_OK);
         // gist deletion fails
         auth()
-                .when().pathParam("gistId",gistId).delete("/gst/{gistId}")
+                .when().pathParam("gistId", gistId).delete("/gst/{gistId}")
                 .then().statusCode(HttpStatus.SC_NOT_FOUND)
-                .body(PATH_MESSAGE,is(ERROR_NOT_FOUND),
-                        PATH_DOC_URL,containsString("developer.github.com"));
+                .body(PATH_MESSAGE, is(ERROR_NOT_FOUND),
+                        PATH_DOC_URL, containsString("developer.github.com"));
         // gist is still present
         restGetGistWithId(gistId).then().statusCode(HttpStatus.SC_OK);
     }
