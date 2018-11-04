@@ -17,6 +17,14 @@ import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
 
+/**
+ * The customer report is created using baeldung custom report
+ * <p>
+ *
+ * @author eugenp
+ * @link https://www.baeldung.com/testng-custom-reporting
+ * @link https://github.com/eugenp/tutorials/blob/master/testing-modules/testng/src/test/java/com/baeldung/reports
+ */
 public class CustomisedReports implements IReporter {
     private static final Logger LOGGER = LoggerFactory.getLogger(CustomisedReports.class);
 
