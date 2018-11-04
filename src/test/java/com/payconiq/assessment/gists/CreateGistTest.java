@@ -52,7 +52,7 @@ public class CreateGistTest extends TestBase {
     @Test
     public void createGistInvalidPayloadIsNotOk() {
         auth()
-                .body("invalidPayload")
+                .body(getFileFromResources(FILE_EMPTY))
                 .post(GISTS).then().statusCode(HttpStatus.SC_BAD_REQUEST)
                 .header("X-GitHub-Media-Type", containsString("github.v3"))
                 .body(PATH_MESSAGE, is("Problems parsing JSON"),

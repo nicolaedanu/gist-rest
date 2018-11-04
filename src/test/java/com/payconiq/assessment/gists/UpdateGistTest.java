@@ -41,7 +41,7 @@ public class UpdateGistTest extends TestBase {
 
         auth()
                 .when().body(getFileFromResources(FILE_GIST_TWO_UPDATE)).pathParam("gistId", gistId).patch(GISTS_ID)
-                .then().statusCode(HttpStatus.SC_OK).log().all()
+                .then().statusCode(HttpStatus.SC_OK)
                 .body("owner.login", Matchers.is(OWNER),
                         "files['updatedgistTwo.txt'].content", Matchers.is(GIST_CONTENT),
                         "description", Matchers.is("Created gistTwo via Rest Assured"));
@@ -78,7 +78,7 @@ public class UpdateGistTest extends TestBase {
         String gistId = restCreateGistWithBody(FILE_GIST_TWO).path("id");
         // update gist using invalid payload
         given()
-                .when().body("{empty}").pathParam("gistId", gistId).patch(GISTS_ID)
+                .when().body(FILE_EMPTY).pathParam("gistId", gistId).patch(GISTS_ID)
                 .then().statusCode(HttpStatus.SC_NOT_FOUND)
                 .body(PATH_MESSAGE, CoreMatchers.is(ERROR_NOT_FOUND),
                         PATH_DOC_URL, containsString(DOC_EDIT_GIST));
