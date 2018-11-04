@@ -11,7 +11,7 @@ operations plus some edge cases based on Github Gists using the github API.
 # How to run
     $ git clone https://github.com/nicolaedanu/gist-rest.git
     $ cd gist-rest
-    $ mvn clean test -Dtoken=yourOauth2GithubToken
+    $ mvn clean test -Dtoken=useTestPayconiqOauth2TestTokens
     # To open report go to test-reports/test-report.html or
     $ open test-reports/test-report.html
 
