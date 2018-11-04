@@ -78,7 +78,7 @@ public class UpdateGistTest extends TestBase {
         String gistId = restCreateGistWithBody(FILE_GIST_TWO).path("id");
         // update gist using invalid payload
         given()
-                .when().body(FILE_EMPTY).pathParam("gistId", gistId).patch(GISTS_ID)
+                .when().body(INVALID_PAYLOAD).pathParam("gistId", gistId).patch(GISTS_ID)
                 .then().statusCode(HttpStatus.SC_NOT_FOUND)
                 .body(PATH_MESSAGE, CoreMatchers.is(ERROR_NOT_FOUND),
                         PATH_DOC_URL, containsString(DOC_EDIT_GIST));

@@ -33,7 +33,7 @@ public abstract class TestBase {
     protected static final String FILE_GIST_TWO = "gistFiles/createGistTwo.json";
     protected static final String FILE_GIST_TWO_UPDATE = "gistFiles/updateGistTwo.json";
     protected static final String FILE_GIST_MULTIPLE = "gistFiles/createGistMultipleFiles.json";
-    protected static final String FILE_EMPTY = "gistFiles/emptyFile.json";
+    protected static final String INVALID_PAYLOAD = "invalid_payload";
 
 
     protected static final String GISTS = "/gists";
