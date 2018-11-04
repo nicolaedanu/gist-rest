@@ -99,11 +99,9 @@ public class CustomisedReports implements IReporter {
 
     private void saveReportTemplate(String outputDirectory, String reportTemplate) {
         new File(outputDirectory).mkdirs();
-        System.out.println("=============================================");
-        System.out.println(outputDirectory);
-        System.out.println("=============================================");
+            LOGGER.info("You can find the reports here: ", outputDirectory);
         try {
-            PrintWriter reportWriter = new PrintWriter(new BufferedWriter(new FileWriter(new File(outputDirectory, "my-report.html"))));
+            PrintWriter reportWriter = new PrintWriter(new BufferedWriter(new FileWriter(new File(outputDirectory, "test-report.html"))));
             reportWriter.println(reportTemplate);
             reportWriter.flush();
             reportWriter.close();
