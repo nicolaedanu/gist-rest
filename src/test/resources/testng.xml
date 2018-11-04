@@ -9,21 +9,21 @@
         </classes>
     </test>
 
-    <!--<test name="Get Gists">-->
-        <!--<classes>-->
-            <!--<class name="com.payconiq.assessment.gists.GetGistTests"></class>-->
-        <!--</classes>-->
-    <!--</test>-->
+    <test name="Get Gists">
+        <classes>
+            <class name="com.payconiq.assessment.gists.GetGistTests"></class>
+        </classes>
+    </test>
 
-    <!--<test name="Update Gists">-->
-        <!--<classes>-->
-            <!--<class name="com.payconiq.assessment.gists.UpdateGistTest"></class>-->
-        <!--</classes>-->
-    <!--</test>-->
+    <test name="Update Gists">
+        <classes>
+            <class name="com.payconiq.assessment.gists.UpdateGistTest"></class>
+        </classes>
+    </test>
 
-    <!--<test name="Create Gists">-->
-        <!--<classes>-->
-            <!--<class name="com.payconiq.assessment.gists.CreateGistTest"></class>-->
-        <!--</classes>-->
-    <!--</test>-->
+    <test name="Create Gists">
+        <classes>
+            <class name="com.payconiq.assessment.gists.CreateGistTest"></class>
+        </classes>
+    </test>
 </suite>
